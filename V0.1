@@ -1,0 +1,137 @@
+int counter = 0;
+int currentState = 0;
+int previousState = 0;
+int redPin= 7;
+int greenPin = 6;
+int bluePin = 5;
+int LED1 = 8;
+int LED2 = 9;
+int LED3 = 10;
+int LED4 = 11;
+int LED5 = 12;
+int LED6 = 13;
+const int trigPin = 4;
+const int echoPin = 3;
+long duration;
+int distance;
+
+void setup() {
+  // ultrasonic
+  Serial.begin (9600); // Starts the serial communication
+  pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
+  pinMode(echoPin, INPUT); // Sets the echoPin as an Input
+  //Led set colors
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(LED3, OUTPUT);
+  pinMode(LED4, OUTPUT);
+  pinMode(LED5, OUTPUT);
+  pinMode(LED6, OUTPUT);
+  
+  
+  
+}
+  
+
+
+void loop() {
+  
+   
+ 
+    
+  //long durationindigit, distanceincm;
+  // Ultrasonic   
+  // Clears the trigPin
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  // Sets the trigPin on HIGH state for 10 micro seconds
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  // Reads the echoPin, returns the sound wave travel time in microseconds
+  duration = pulseIn(echoPin, HIGH);
+  // Calculating the distance
+  distance= (duration*0.034/2);
+  
+  // Prints the distance on the Serial Monitor
+  Serial.print("Distance: ");
+  Serial.println(distance);
+  Serial.print(counter);
+  
+  
+  //func1 - count 
+  if (distance >= 50) {
+    currentState = 1;
+  }
+  else {
+  currentState = 0;
+  }
+  //func 2 - lights 
+  if count 1, then red
+ 
+  {}
+  {}
+  
+  //delay 8 hours? 
+  
+  
+  
+  
+  
+  
+  
+  
+  if (distance >= 50) {
+    currentState = 1;
+  }
+  else {
+  currentState = 0;
+  }
+  delay(200);
+  if(currentState != previousState){
+    if (currentState == 1){
+     
+      
+ if (distance<50) {
+ digitalWrite(redPin, HIGH); //set led to ON
+ }
+  
+  else if (distance>50){
+ digitalWrite(redPin, LOW); //set led to OFF
+    
+   
+    if (currentState = 1){
+      digitalWrite(bluePin, HIGH);
+    
+    
+    
+    
+    counter++;
+  if (counter >= 15) counter = 0;  
+      
+   // delay (480000);
+    delay(500);
+    }}}}}
+
+
+
+  
+  
+  //setColor(255, 0, 0); // Red Color
+  //delay(1000);
+  //setColor(0, 255, 0); // Green Color
+  //delay(1000);
+  //setColor(0, 0, 255); // Blue Color
+  //delay(1000);
+  //setColor(255, 255, 255); // White Color
+  //delay(1000);
+  //setColor(170, 0, 255); // Purple Color
+  //delay(1000);
+
+ 
+
+  
+ 
