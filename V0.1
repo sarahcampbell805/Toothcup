@@ -1,9 +1,10 @@
+
 int counter = 0;
 int currentState = 0;
 int previousState = 0;
 int redPin= 7;
-int greenPin = 6;
-int bluePin = 5;
+int greenPin = 5;
+int bluePin = 6;
 int LED1 = 8;
 int LED2 = 9;
 int LED3 = 10;
@@ -60,77 +61,78 @@ void loop() {
   Serial.print("Distance: ");
   Serial.println(distance);
   Serial.print(counter);
+ // Serial.print("redPin status: ");
   
-  
-  //func1 - count 
-  if (distance >= 50) {
-    currentState = 1;
-  }
-  else {
-  currentState = 0;
-  }
-  //func 2 - lights 
-  if count 1, then red
  
-  {}
-  {}
-  
-  //delay 8 hours? 
+
   
   
   
   
-  
-  
-  
-  
-  if (distance >= 50) {
-    currentState = 1;
-  }
-  else {
-  currentState = 0;
-  }
-  delay(200);
-  if(currentState != previousState){
-    if (currentState == 1){
-     
-      
- if (distance<50) {
- digitalWrite(redPin, HIGH); //set led to ON
+  if (distance>50) {
+	 digitalWrite(redPin, HIGH);//set led to ON
+     currentState = 1;
  }
+  else {
+    digitalWrite(redPin, LOW); //set led to OFF
+    currentState = 0;
+  }
   
-  else if (distance>50){
- digitalWrite(redPin, LOW); //set led to OFF
-    
-   
-    if (currentState = 1){
-      digitalWrite(bluePin, HIGH);
-    
-    
-    
-    
+  delay(400);
+  
+  if (distance<50)
+    if(currentState = 1) {
+	 digitalWrite(bluePin, HIGH);//set led to ON
+    currentState = 2;
+ }
+  else {
+    digitalWrite(bluePin, LOW); //set led to OFF
+    currentState = 2;
+  }
+  
     counter++;
-  if (counter >= 15) counter = 0;  
+  
+  
+  
+   if (distance>50) {
+	 digitalWrite(redPin, HIGH);//set led to ON
+     currentState = 1;
+ }
+  else {
+    digitalWrite(redPin, LOW); //set led to OFF
+    currentState = 0;
+  }
+  
+  delay(400);
+  
+  if (distance<50)
+    if(currentState = 1) {
+	 digitalWrite(bluePin, HIGH);//set led to ON
+    currentState = 2;
+ }
+  else {
+    digitalWrite(bluePin, LOW); //set led to OFF
+    currentState = 2;
+  }
+  
+    counter++;
+  
+  
+  
+  
+  if (counter >= 8) counter = 0;  
       
-   // delay (480000);
-    delay(500);
-    }}}}}
-
+   
+   delay(10000);
+  
+  
+}
 
 
   
-  
-  //setColor(255, 0, 0); // Red Color
-  //delay(1000);
-  //setColor(0, 255, 0); // Green Color
-  //delay(1000);
-  //setColor(0, 0, 255); // Blue Color
-  //delay(1000);
-  //setColor(255, 255, 255); // White Color
-  //delay(1000);
-  //setColor(170, 0, 255); // Purple Color
-  //delay(1000);
-
+ 
+ 
+//reset button if button pushed then reset 
  
 
   
