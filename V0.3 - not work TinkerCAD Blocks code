@@ -1,0 +1,121 @@
+// C++ code
+//
+int Day = 0;
+
+int i = 0;
+
+int Afternoon_Yes = 0;
+
+int Morning_Yes = 0;
+
+int j = 0;
+
+int pinDay2 = 0;
+
+int Pattern1 = 0;
+
+int red_light = 0;
+
+int RPIN1 = 0;
+
+int PIN10 = 0;
+
+int PIN11 = 0;
+
+int PIN9 = 0;
+
+int Ultra = 0;
+
+long readUltrasonicDistance(int triggerPin, int echoPin)
+{
+  pinMode(triggerPin, OUTPUT);  // Clear the trigger
+  digitalWrite(triggerPin, LOW);
+  delayMicroseconds(2);
+  // Sets the trigger pin to HIGH state for 10 microseconds
+  digitalWrite(triggerPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(triggerPin, LOW);
+  pinMode(echoPin, INPUT);
+  // Reads the echo pin, and returns the sound wave travel time in microseconds
+  return pulseIn(echoPin, HIGH);
+}
+
+void setup()
+{
+  pinMode(11, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(3, OUTPUT);
+
+  digitalWrite(11, LOW);
+  digitalWrite(10, LOW);
+  digitalWrite(9, LOW);
+  digitalWrite(6, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(3, LOW);
+  Afternoon_Yes = 0;
+  Morning_Yes = 0;
+  Day = 0;
+  Ultra = 0.01723 * readUltrasonicDistance(13, 12);
+}
+
+void loop()
+{
+  if (10 == 10) {
+    if (Ultra >= 30) {
+      if (Ultra < 30) {
+        for (Morning_Yes = 0; Morning_Yes <= 1; Morning_Yes += 1) {
+          analogWrite(6, 51);
+          analogWrite(5, 255);
+          analogWrite(3, 255);
+        }
+      }
+    }
+    if (Morning_Yes == 1 && Ultra >= 30) {
+      if (Ultra < 30) {
+        for (Afternoon_Yes = 0; Afternoon_Yes <= 1; Afternoon_Yes += 1) {
+          analogWrite(6, 0);
+          analogWrite(5, 153);
+          analogWrite(3, 0);
+        }
+      }
+    } else {
+      delay(5000); // Wait for 5000 millisecond(s)
+      if (Morning_Yes == 0 && Ultra >= 30) {
+        if (Morning_Yes == 0 && Ultra < 30) {
+          Afternoon_Yes += 1;
+          analogWrite(6, 51);
+          analogWrite(5, 51);
+          analogWrite(3, 255);
+        }
+      }
+    }
+  } else {
+    delay(24000); // Wait for 24000 millisecond(s)
+    if (Morning_Yes == 0 && Afternoon_Yes == 0) {
+      analogWrite(6, 255);
+      analogWrite(5, 0);
+      analogWrite(3, 0);
+    }
+  }
+  Day += (Day + 1);
+
+  Morning_Yes == 0;
+
+  if (Day == 1) {
+    analogWrite(6, PIN11);
+    analogWrite(5, PIN9);
+    analogWrite(3, PIN10);
+    if (PIN11 == PIN11) {
+      analogWrite(11, PIN11);
+    }
+    if (PIN9 == PIN9) {
+      analogWrite(9, PIN9);
+    }
+    if (PIN10 == PIN10) {
+      analogWrite(10, PIN10);
+    }
+  }
+}
