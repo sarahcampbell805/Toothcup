@@ -2,14 +2,14 @@
 int counter = 0;
 int currentState = 0;
 int previousState = 0;
-int rPin1 = 7;				//Red Day 1
-int bPin1 = 6;              //Blue Day 1
-int gPin1 = 5;              //Green Day 1
-int rPin2 = 4;				//Red Day 2
-int bPin3 = 3;              //Blue Day 2
-int gPin4 = 2;              //Green Day 2
-const int trigPin = 9;
-const int echoPin = 8;
+int rPin1 = 11;				//Red Day 1
+int bPin1 = 10;              //Blue Day 1
+int gPin1 = 9;              //Green Day 1
+int rPin2 = 6;				//Red Day 2
+int bPin2 = 5;              //Blue Day 2
+int gPin2 = 3;              //Green Day 2
+const int trigPin = 13;
+const int echoPin = 12;
 long duration;
 int distance;
 
@@ -48,7 +48,7 @@ void loop() {
   Serial.print("Distance: ");
   Serial.println(distance);
   Serial.print(counter);
-  Serial.print(counter);
+  
 
   
  
@@ -58,12 +58,12 @@ void loop() {
   
   
   
-  if (distance>50) {
-	 digitalWrite(redPin, HIGH);//set led to ON
+  if (distance>50) && {
+	 digitalWrite(rPin1, HIGH);//set led to ON
      currentState = 1;
  }
   else {
-    digitalWrite(redPin, LOW); //set led to OFF
+    digitalWrite(rPin1, LOW); //set led to OFF
     currentState = 0;
   }
   
@@ -71,11 +71,11 @@ void loop() {
   
   if (distance<50)
     if(currentState = 1) {
-	 digitalWrite(bluePin, HIGH);//set led to ON
+	 digitalWrite(bPin2, HIGH);//set led to ON
     currentState = 2;
  }
   else {
-    digitalWrite(bluePin, LOW); //set led to OFF
+    digitalWrite(bPin2, LOW); //set led to OFF
     currentState = 2;
   }
   
@@ -84,11 +84,11 @@ void loop() {
   
   
    if (distance>50) {
-	 digitalWrite(redPin, HIGH);//set led to ON
+	 digitalWrite(rPin1, HIGH);//set led to ON
      currentState = 1;
  }
   else {
-    digitalWrite(redPin, LOW); //set led to OFF
+    digitalWrite(rPin1, LOW); //set led to OFF
     currentState = 0;
   }
   
@@ -96,11 +96,11 @@ void loop() {
   
   if (distance<50)
     if(currentState = 1) {
-	 digitalWrite(bluePin, HIGH);//set led to ON
+	 digitalWrite(bPin2, HIGH);//set led to ON
     currentState = 2;
  }
   else {
-    digitalWrite(bluePin, LOW); //set led to OFF
+    digitalWrite(bPin2, LOW); //set led to OFF
     currentState = 2;
   }
   
@@ -122,5 +122,3 @@ void loop() {
  
  
 //reset button if button pushed then reset 
-  
- 
