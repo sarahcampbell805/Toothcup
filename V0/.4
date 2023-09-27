@@ -1,0 +1,87 @@
+
+int counter = 0;
+int currentState = 0;
+int previousState = 0;
+int rPin1 = 11;				//Red Day 1
+int bPin1 = 10;              //Blue Day 1
+int gPin1 = 9;              //Green Day 1
+int rPin2 = 6;				//Red Day 2
+int bPin2 = 5;              //Blue Day 2
+int gPin2 = 3;              //Green Day 2
+const int trigPin = 13;
+const int echoPin = 12;
+long duration;
+int distance;
+int morning_Yes = 0;
+int afternoon_Yes = 0;
+
+
+
+void setup() {
+  // ultrasonic
+  Serial.begin (9600); // Starts the serial communication
+  pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
+  pinMode(echoPin, INPUT); // Sets the echoPin as an Input
+  //Led set colors
+  pinMode(rPin1, OUTPUT);
+  pinMode(bPin1, OUTPUT);
+  pinMode(gPin1, OUTPUT);
+  pinMode(rPin2, OUTPUT);
+  pinMode(bPin2, OUTPUT);
+  pinMode(gPin2, OUTPUT);
+}
+  
+
+
+void loop() {
+  // Ultrasonic 
+  
+  // Clears the trigPin
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  // Sets the trigPin on HIGH state for 10 micro seconds
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  // Reads the echoPin, returns the sound wave travel time in microseconds
+  duration = pulseIn(echoPin, HIGH);
+  // Calculating the distance
+  distance = (duration*0.034/2);
+  
+  // Prints the distance on the Serial Monitor
+
+  Serial.println("Distance: ");
+  Serial.println(distance);
+  Serial.print(counter);
+  Serial.print(morning_Yes);
+  Serial.print(morning_Yes);
+  
+
+  
+ 
+
+  
+ //define a single day// lighting patterns 
+  
+    
+  if (distance<50);
+  delay(500);
+  if (distance>50);
+  delay(500);
+  if (distance<50) {
+     ++morning_Yes;
+	 digitalWrite(bPin1, HIGH);//set led to ON
+     delay(1000);
+  }
+}
+  for (int morning_Yes = 1; morning_Yes < 6; morning_Yes++){
+ 
+  if (distance<50);
+  delay(500);
+    if (distance>50){
+  
+    ++afternoon_Yes;
+    delay(100);
+	 digitalWrite(gPin1, HIGH);//set led to ON
+  
+  }}}}
