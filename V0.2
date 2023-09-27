@@ -1,0 +1,126 @@
+
+int counter = 0;
+int currentState = 0;
+int previousState = 0;
+int rPin1 = 7;				//Red Day 1
+int bPin1 = 6;              //Blue Day 1
+int gPin1 = 5;              //Green Day 1
+int rPin2 = 4;				//Red Day 2
+int bPin3 = 3;              //Blue Day 2
+int gPin4 = 2;              //Green Day 2
+const int trigPin = 9;
+const int echoPin = 8;
+long duration;
+int distance;
+
+void setup() {
+  // ultrasonic
+  Serial.begin (9600); // Starts the serial communication
+  pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
+  pinMode(echoPin, INPUT); // Sets the echoPin as an Input
+  //Led set colors
+  pinMode(rPin1, OUTPUT);
+  pinMode(bPin1, OUTPUT);
+  pinMode(gPin1, OUTPUT);
+  pinMode(rPin2, OUTPUT);
+  pinMode(bPin2, OUTPUT);
+  pinMode(gPin2, OUTPUT);
+}
+  
+
+
+void loop() {
+  // Ultrasonic 
+  
+  // Clears the trigPin
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  // Sets the trigPin on HIGH state for 10 micro seconds
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  // Reads the echoPin, returns the sound wave travel time in microseconds
+  duration = pulseIn(echoPin, HIGH);
+  // Calculating the distance
+  distance= (duration*0.034/2);
+  
+  // Prints the distance on the Serial Monitor
+  Serial.print("Distance: ");
+  Serial.println(distance);
+  Serial.print(counter);
+  Serial.print(counter);
+
+  
+ 
+
+  
+ //define a single day 
+  
+  
+  
+  if (distance>50) {
+	 digitalWrite(redPin, HIGH);//set led to ON
+     currentState = 1;
+ }
+  else {
+    digitalWrite(redPin, LOW); //set led to OFF
+    currentState = 0;
+  }
+  
+  delay(400);
+  
+  if (distance<50)
+    if(currentState = 1) {
+	 digitalWrite(bluePin, HIGH);//set led to ON
+    currentState = 2;
+ }
+  else {
+    digitalWrite(bluePin, LOW); //set led to OFF
+    currentState = 2;
+  }
+  
+    counter++;
+  
+  
+  
+   if (distance>50) {
+	 digitalWrite(redPin, HIGH);//set led to ON
+     currentState = 1;
+ }
+  else {
+    digitalWrite(redPin, LOW); //set led to OFF
+    currentState = 0;
+  }
+  
+  delay(400);
+  
+  if (distance<50)
+    if(currentState = 1) {
+	 digitalWrite(bluePin, HIGH);//set led to ON
+    currentState = 2;
+ }
+  else {
+    digitalWrite(bluePin, LOW); //set led to OFF
+    currentState = 2;
+  }
+  
+    counter++;
+  
+  
+  
+  
+  if (counter >= 8) counter = 0;  
+      
+   
+   delay(10000);
+  
+  
+}
+
+
+  
+ 
+ 
+//reset button if button pushed then reset 
+  
+ 
